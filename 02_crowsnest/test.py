@@ -66,3 +66,12 @@ def test_vowel_upper():
     for word in vowel_words:
         out = getoutput(f'{prg} {word.upper()}')
         assert out.strip() == template.format('an', word.upper())
+
+
+# --------------------------------------------------
+# TODO work on going further
+def test_article_match():
+    """Octopus -> An Octopus"""
+
+    for word in vowel_words:
+        out = getoutput(f('{prg} {word.upper())
