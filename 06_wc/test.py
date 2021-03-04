@@ -92,8 +92,8 @@ def test_more():
 
     rv, out = getstatusoutput(f'{prg} {fox} {sonnet}')
     expected = ('       1       9      45 ../inputs/fox.txt\n'
-                '      17     118     661 ../inputs/sonnet-29.txt\n'
-                '      18     127     706 total')
+                '      17     118     669 ../inputs/sonnet-29.txt\n'
+                '      18     127     714 total')
     assert rv == 0
     assert out.rstrip() == expected
 

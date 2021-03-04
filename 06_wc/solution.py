@@ -34,7 +34,7 @@ def main():
         num_lines, num_words, num_bytes = 0, 0, 0
         for line in fh:
             num_lines += 1
-            num_bytes += len(line)
+            num_bytes += len(line.encode('UTF8'))
             num_words += len(line.split())
 
         total_lines += num_lines

@@ -51,6 +51,13 @@ def test_text_stdout():
 
 
 # --------------------------------------------------
+def test_text_lower_stdout():
+    """Test STDIN/lower OUT"""
+
+    out = getoutput(f'{prg} --e "FOO BAR BAZ"')
+    assert out.strip() == 'foo bar baz'
+
+# --------------------------------------------------
 def test_text_outfile():
     """Test STDIN/outfile"""
 

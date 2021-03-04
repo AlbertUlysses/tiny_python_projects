@@ -12,7 +12,9 @@ consonant_words = [
     'zebrafish'
 ]
 vowel_words = ['aviso', 'eel', 'iceberg', 'octopus', 'upbound']
+none_words = ['1', '!']
 template = 'Ahoy, Captain, {} {} off the larboard bow!'
+template2 = 'Ahoy, Captain, {} {} off the {} bow!'
 
 
 # --------------------------------------------------
@@ -47,7 +49,7 @@ def test_consonant_upper():
 
     for word in consonant_words:
         out = getoutput(f'{prg} {word.title()}')
-        assert out.strip() == template.format('a', word.title())
+        assert out.strip() == template.format('A', word.title())
 
 
 # --------------------------------------------------
@@ -65,13 +67,31 @@ def test_vowel_upper():
 
     for word in vowel_words:
         out = getoutput(f'{prg} {word.upper()}')
-        assert out.strip() == template.format('an', word.upper())
+        assert out.strip() == template.format('An', word.upper())
 
 
 # --------------------------------------------------
-# TODO work on going further
 def test_article_match():
     """Octopus -> An Octopus"""
 
     for word in vowel_words:
-        out = getoutput(f('{prg} {word.upper())
+        out = getoutput(f'{prg} {word.upper()}')
+        assert out.strip() == template.format('An', word.upper())
+
+
+# --------------------------------------------------
+def test_side():
+    """-s starboard -> starboard side"""
+
+    for word in vowel_words:
+        out = getoutput(f'{prg} {word} -s')
+        assert out.strip() == template2.format('an', word, 'starboard')
+
+
+# --------------------------------------------------
+def test_article_num():
+    """1 -> x 1"""
+
+    for word in none_words:
+        out = getoutput(f'{prg} {word}')
+        assert out.strip() == template.format('a', word)
